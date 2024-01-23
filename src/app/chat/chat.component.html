@@ -1,0 +1,25 @@
+<main class="container">
+  <div class="containerChat">
+    <div *ngIf="messages[0].content[0].text.value === ''" class="loaderField">
+      <span class="loader"></span>
+    </div>
+    <div class="chat" *ngFor="let message of messages" [ngClass]="message.role">
+      {{ message.content[0].text.value }}
+    </div>
+  </div>
+  <div class="whiter">
+    <label for="attach">
+      <img src="assets/img/attach.svg" alt="attach" />
+      <input type="file" id="attach" (change)="onFileSelected($event)" />
+    </label>
+
+    <input
+      [(ngModel)]="newMessage"
+      type="text"
+      placeholder="Digite sua mensagem..."
+    />
+    <button (click)="onSubmit()">
+      <img src="assets/img/send.svg" alt="send" />
+    </button>
+  </div>
+</main>

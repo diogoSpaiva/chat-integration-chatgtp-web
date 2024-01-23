@@ -1,0 +1,99 @@
+.container {
+  height: 80%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0 16px 25px -21px #000;
+  background-color: var(--background-container);
+}
+.containerChat {
+  padding: 32px;
+  display: inline-flex;
+  flex-direction: column-reverse;
+  overflow-y: auto;
+}
+
+.chat {
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 8px;
+  align-self: flex-start;
+  &.assistant {
+    background-color: var(--primary-color-50);
+  }
+  &.user {
+    background-color: var(--secondary-color);
+    align-self: flex-end;
+  }
+}
+
+.whiter {
+  display: flex;
+  align-items: center;
+  background-color: var(--input-background);
+}
+
+input[type="text"] {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding-right: 16px;
+  padding: 16px 16px 16px 0;
+  background-color: var(--input-background);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label {
+  padding: 10px;
+  cursor: pointer;
+  img {
+    transform: rotate(45deg);
+  }
+}
+
+button {
+  width: 48px;
+  height: 48px;
+  border: none;
+  cursor: pointer;
+  padding: 1px 0 0 5px;
+  background-color: var(--primary-color);
+}
+
+.loaderField {
+  background-color: var(--primary-color);
+  display: inline-flex;
+  padding: 6px 25px 6px 50px;
+  border-radius: 100px;
+}
+
+.loader {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: block;
+  margin: 8px auto;
+  position: relative;
+  color: #fff;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite alternate;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: -35px -6px, -14px 6px, 8px -6px;
+  }
+  33% {
+    box-shadow: -35px 6px, -14px -6px, 8px 6px;
+  }
+  66% {
+    box-shadow: -35px -6px, -14px 6px, 8px -6px;
+  }
+  100% {
+    box-shadow: -35px 6px, -14px -6px, 8px 6px;
+  }
+}
