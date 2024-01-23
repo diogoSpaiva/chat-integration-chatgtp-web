@@ -1,5 +1,5 @@
 // chat.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MessageService } from './../../services/message.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,17 +13,13 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, FormsModule, HttpClientModule],
   providers: [MessageService],
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent {
   messages: any[] = [];
   newMessage: string = '';
   selectedFile: File | null = null;
   file_ids: string[] = [];
 
   constructor(private messageService: MessageService) {}
-
-  ngOnInit() {
-    this.loadMessages();
-  }
 
   loadMessages() {
     this.messageService.run().subscribe(() => this.getMessages());

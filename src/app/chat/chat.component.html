@@ -1,8 +1,13 @@
 <main class="container">
   <div class="containerChat">
-    <div *ngIf="messages[0].content[0].text.value === ''" class="loaderField">
-      <span class="loader"></span>
-    </div>
+    <ng-container *ngIf="messages[0]">
+      <div
+        *ngIf="messages?.[0].content?.[0].text.value === ''"
+        class="loaderField"
+      >
+        <span class="loader"></span>
+      </div>
+    </ng-container>
     <div class="chat" *ngFor="let message of messages" [ngClass]="message.role">
       {{ message.content[0].text.value }}
     </div>
