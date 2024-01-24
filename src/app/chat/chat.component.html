@@ -7,8 +7,8 @@
           {{ selectedFile.name }}
         </div>
         <div class="wait">Aguardando pergunta</div>
-        <div class="progress">
-          <div class="color"></div>
+        <div class="progress" *ngIf="progress">
+          <div class="color" [ngStyle]="{ 'width.%': progress }"></div>
         </div>
       </div>
     </ng-container>

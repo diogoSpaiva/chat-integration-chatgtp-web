@@ -18,6 +18,7 @@ export class ChatComponent implements OnInit {
   file_ids: string[] = [];
   newMessage: string = '';
   selectedFile: File | null = null;
+  progress: number | undefined;
 
   constructor(private messageService: MessageService) {}
 
@@ -64,11 +65,35 @@ export class ChatComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
 
+  // uploadFile(): void {
+  //   if (this.selectedFile) {
+  //     this.messageService.sendFile(this.selectedFile).subscribe({
+  //       next: (event: any) => {
+  //         if (event.type === HttpEventType.UploadProgress) {
+  //           this.progress = Math.round((100 * event.loaded) / event.total);
+  //         } else if (event.type === HttpEventType.Response) {
+  //           this.progress = 100;
+  //           console.log('====================================');
+  //           console.log(event.body);
+  //           console.log('====================================');
+  //           console.log('Arquivo enviado com sucesso:', event.body);
+  //           this.file_ids.push(event.body.id);
+  //           this.sendMessage();
+  //           this.selectedFile = null;
+  //         }
+  //       },
+  //       error: (error) => {
+  //         console.error('Erro ao enviar o arquivo:', error);
+  //       },
+  //     });
+  //   }
+  // }
+
   uploadFile() {
     if (this.selectedFile) {
       this.messageService.sendFile(this.selectedFile).subscribe((res: any) => {
         this.selectedFile = null;
-        this.file_ids.push(res.file_id);
+        this.file_ids.push(res.id);
         this.sendMessage();
       });
     }

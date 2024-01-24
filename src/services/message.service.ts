@@ -28,6 +28,19 @@ export class MessageService {
     return this.http.post<any>(`${environment.apiOpenAi}run`, null);
   }
 
+  // sendFile(file: File): Observable<HttpEvent<any>> {
+  //   const formData = new FormData();
+  //   formData.append('file', file);
+  //   const req = new HttpRequest(
+  //     'POST',
+  //     `${environment.apiOpenAi}upload-file`,
+  //     formData,
+  //     { reportProgress: true }
+      
+  //   );
+  //   return this.http.request(req);
+  // }
+
   sendFile(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
