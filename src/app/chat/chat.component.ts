@@ -14,7 +14,20 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [MessageService],
 })
 export class ChatComponent implements OnInit {
-  messages: any[] = [];
+  messageInit: any = {
+    role: 'assistant',
+    content: [
+      {
+        type: 'text',
+        text: {
+          value:
+            'Olá, eu sou Wauto e estou aqui para te ajudar a renovar o seu seguro auto. <br>Poderia me enviar a apólice atual?',
+        },
+      },
+    ],
+  };
+
+  messages: any[] = [this.messageInit];
   file_ids: string[] = [];
   newMessage: string = '';
   selectedFile: File | null = null;
@@ -43,7 +56,10 @@ export class ChatComponent implements OnInit {
 
   getMessages() {
     this.messageService.getMessages().subscribe((messages: any) => {
-      this.messages = messages.data;
+      this.messages = [
+        ...messages.data,
+        ...[this.messageInit],
+      ];
       this.loadResponse = false;
     });
   }
