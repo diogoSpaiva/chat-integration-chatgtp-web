@@ -26,6 +26,21 @@
     background-color: var(--secondary-color);
     align-self: flex-end;
   }
+  &.file {
+    background-color: var(--input-background);
+    align-self: flex-end;
+  }
+}
+.wait {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 6px;
+}
+
+.infoAttach {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .whiter {
@@ -48,7 +63,7 @@ input[type="file"] {
 }
 
 label {
-  padding: 10px;
+  padding: 16px 10px 8px 10px;
   cursor: pointer;
   img {
     transform: rotate(45deg);
@@ -56,11 +71,11 @@ label {
 }
 
 button {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border: none;
   cursor: pointer;
-  padding: 1px 0 0 5px;
+  padding: 5px 0 0 5px;
   background-color: var(--primary-color);
 }
 
@@ -69,6 +84,7 @@ button {
   display: inline-flex;
   padding: 6px 25px 6px 50px;
   border-radius: 100px;
+  align-self: flex-start;
 }
 
 .loader {
@@ -95,5 +111,37 @@ button {
   }
   100% {
     box-shadow: -35px 6px, -14px -6px, 8px 6px;
+  }
+}
+
+.progress {
+  position: relative;
+  height: 10px;
+  border: 2px solid var(--primary-color);
+  border-radius: 15px;
+}
+.progress .color {
+  position: absolute;
+  background-color: var(--primary-color-300);
+  width: 0px;
+  height: 10px;
+  border-radius: 15px;
+  animation: progres 4s infinite linear;
+}
+@keyframes progres {
+  0% {
+    width: 0%;
+  }
+  25% {
+    width: 50%;
+  }
+  50% {
+    width: 75%;
+  }
+  75% {
+    width: 85%;
+  }
+  100% {
+    width: 100%;
   }
 }

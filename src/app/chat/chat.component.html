@@ -1,5 +1,17 @@
 <main class="container">
   <div class="containerChat">
+    <ng-container *ngIf="selectedFile">
+      <div class="chat file">
+        <div class="infoAttach">
+          <img src="assets/img/doc.svg" alt="doc" />
+          {{ selectedFile.name }}
+        </div>
+        <div class="wait">Aguardando pergunta</div>
+        <div class="progress">
+          <div class="color"></div>
+        </div>
+      </div>
+    </ng-container>
     <ng-container *ngIf="messages[0]">
       <div
         *ngIf="messages?.[0].content?.[0].text.value === ''"
@@ -8,9 +20,15 @@
         <span class="loader"></span>
       </div>
     </ng-container>
-    <div class="chat" *ngFor="let message of messages" [ngClass]="message.role">
-      {{ message.content[0].text.value }}
-    </div>
+    <ng-container *ngFor="let message of messages">
+      <div
+        class="chat"
+        *ngIf="message.content[0].text.value"
+        [ngClass]="message.role"
+      >
+        {{ message.content[0].text.value }}
+      </div>
+    </ng-container>
   </div>
   <div class="whiter">
     <label for="attach">
@@ -22,6 +40,7 @@
       [(ngModel)]="newMessage"
       type="text"
       placeholder="Digite sua mensagem..."
+      (keyup.enter)="onSubmit()"
     />
     <button (click)="onSubmit()">
       <img src="assets/img/send.svg" alt="send" />

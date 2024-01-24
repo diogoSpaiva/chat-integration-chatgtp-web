@@ -13,7 +13,7 @@ export class MessageService {
   constructor(private http: HttpClient) {}
 
   getMessages(): Observable<string[]> {
-    return this.http.get<any>(`${environment.apiOpenAi}get-message`);
+    return this.http.get<any>(`${environment.apiOpenAi}get-messages`);
   }
 
   sendMessage(content: string, file_ids: string[]): Observable<any> {
