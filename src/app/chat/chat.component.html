@@ -6,12 +6,12 @@
       </div>
     </ng-container>
     <ng-container *ngFor="let message of messages">
-      <pre
+      <div
         class="chat"
         *ngIf="message.content[0].text.value"
         [ngClass]="message.role"
         innerHTML="{{ handleText(message.content[0].text.value) }}"
-      ></pre>
+      ></div>
     </ng-container>
   </div>
   <div class="whiter">

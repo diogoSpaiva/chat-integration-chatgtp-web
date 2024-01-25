@@ -122,7 +122,8 @@ export class ChatComponent implements OnInit {
             .replace(/^\*\*/g, '<p class="title">')
             .replace(/\*\*/g, '</p>')
             .replaceAll('\n', '<p class="item">')
-            .replace(/【\d*†source】\./g, '.</p>');
+            .replace(/【\d*†source】\./g, '.</p>')
+            .replace(/【\d*†source】/g, '');
           return;
         }
         htmlTemp += `<p>${element}</p>`;
